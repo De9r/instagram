@@ -15,14 +15,14 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 #Logger Setup
 logger = logging.getLogger(__name__)
 
-TOKEN = "YOUR_TOKEN_HERE"
+TOKEN = "5656228068:AAFsE_9-nWNqlhyUYoxEe-pNS7nFie5TjzU"
 
 def download(update: Update, context: CallbackContext):
     message = update.effective_message
     instagram_post = message.text
     if instagram_post=="/start":
         context.bot.send_chat_action(chat_id=update.message.chat_id, action="typing")
-        update.message.reply_text("❤️ Thanks For Using Me Just Send Me The Link In Below Format  \n🔥 Format :- https://www.instagram.com/p/B4zvXCIlNTw/ \nVideos Must Be Less Then 20MB, For Now It Cannot Support Long IGTV Videos \n\n<b>Support Group :-</b> @Technology_Arena \n<b>🌀 Source</b> \nhttps://github.com/TheDarkW3b/instagram", parse_mode=ParseMode.HTML, disable_web_page_preview=True)
+        update.message.reply_text("شكرًا لاستخدامي ، فقط أرسل لي الرابط بالتنسيق أدناه \ n🔥 التنسيق: - https://www.instagram.com/p/B4zvXCIlNTw/ \ n يجب أن تكون مقاطع الفيديو أقل من 20 ميجابايت ، في الوقت الحالي لا يمكن دعم مقاطع فيديو IGTV الطويلة  ", parse_mode=ParseMode.HTML, disable_web_page_preview=True)
     else:
         pass
     if "instagram.com" in instagram_post:
@@ -34,7 +34,7 @@ def download(update: Update, context: CallbackContext):
             visit = requests.get(url).json()
             checking_video = visit['graphql']['shortcode_media']['is_video']
         except:
-            context.bot.sendMessage(chat_id=update.message.chat_id, text="Send Me Only Public Instagram Posts ⚡️")
+            context.bot.sendMessage(chat_id=update.message.chat_id, text="أرسل لي منشورات Instagram العامة فقط ⚡️")
         
         if checking_video==True:
             try:
@@ -53,9 +53,9 @@ def download(update: Update, context: CallbackContext):
                 pass
         else:
             context.bot.send_chat_action(chat_id=update.message.chat_id, action="typing")
-            context.bot.sendMessage(chat_id=update.message.chat_id, text="I Cant Send You Private Posts :-( ")
+            context.bot.sendMessage(chat_id=update.message.chat_id, text="ماكدرت احصل الحساب لأنه خاص")
     else:
-        context.bot.sendMessage(chat_id=update.message.chat_id, text="Kindly Send Me Public Instagram Video/Photo Url")
+        context.bot.sendMessage(chat_id=update.message.chat_id, text="دز رابط صورة او فيديو لأحمله")
 
 def main():
     updater = Updater(TOKEN, use_context=True)
